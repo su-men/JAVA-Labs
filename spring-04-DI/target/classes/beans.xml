@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address1" class="com.summer.pojo.Address">
+        <property name="address" value="26bigStress"/>
+    </bean>
+
+    <bean id="student1" class="com.summer.pojo.Student">
+        <!-- 1.value注入 value-->
+        <property name="name" value="student1"/>
+        <!-- 2.bean注入 ref -->
+        <property name="address" ref="address1"/>
+        <!-- 3.数组注入 array -->
+        <property name="books">
+            <array>
+                <value>语文书</value>
+                <value>数学书</value>
+                <value>英语书</value>
+                <value>体育书</value>
+            </array>
+        </property>
+        <!-- 4.list注入 list -->
+        <property name="hobbys">
+            <list>
+                <value>语文</value>
+                <value>数学</value>
+                <value>英语</value>
+                <value>体育</value>
+            </list>
+        </property>
+
+        <property name="card">
+            <map>
+                <entry key = "身份证" value="adfdfefefefef"/>
+            </map>
+        </property>
+
+        <property name="home_addresses">
+        <map>
+            <entry key = "an ref" value="address1"/>
+        </map>
+        </property>
+
+        <property name="wife">
+            <null/>
+        </property>
+
+        <property name="info" >
+            <props>
+                <prop key="学号">20221613</prop>
+                <prop key="性别">男</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
