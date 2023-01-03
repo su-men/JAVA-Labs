@@ -1,0 +1,9 @@
+server:
+  port: 8082
+
+Spring:
+  thymeleaf:
+    cache: false
+  messages:
+    basename: i18n.login
+
