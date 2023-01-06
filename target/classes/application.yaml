@@ -1,9 +1,40 @@
 server:
-  port: 8082
+  port: 8081
 
 Spring:
   thymeleaf:
     cache: false
   messages:
     basename: i18n.login
+  datasource:
+    username: root
+    password: mysql123456
+    url: jdbc:mysql://localhost:3306/mybatis?serverTime=UTC&useUnicode=true&characterEncoding=utf-8
 
+    #Spring Boot默认是不注入这些属性值的，需要自己绑定
+    #druid
+    #数据源专有配置
+    initialsize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedstatements: true
+    #配置监控统计拦截的filters,stat:监控统计、Log4):目志记录、waLL：防御sqL注入
+    #如果允许时报错java.Lang.CLassNotFoundException:org.apache.Log4j.Priority
+    #则导入Log4j依赖即可，Maven地址：https://mvnrepository.com/artifact/儿og4j/儿og4j
+    filters: stat,wall,log4j
+    maxPoolPreparedstatementPerConnectionSize: 20
+    useGlobalDataSourcestat: true
+    connectionProperties: druid.stat.mergesql=true;druid.stat.slowSqlMillis=500
+
+mybatis:
+  type-aliases-package: com.summer.pojo
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

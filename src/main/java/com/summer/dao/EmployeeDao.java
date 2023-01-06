@@ -20,13 +20,13 @@ public class EmployeeDao {
 
     private static Integer INDEX = 205;
     //模拟数据库中的数据
-    private static Map<Integer, Employee> employees = null;
+    private static final Map<Integer, Employee> employees;
     static{
-        employees = new HashMap<Integer, Employee>();
-        employees.put(201,new Employee(201,"tom",1,new Department(101,"教学部")));
-        employees.put(202,new Employee(202,"tony",1,new Department(102,"市场部")));
-        employees.put(203,new Employee(203,"jemmy",1,new Department(103,"运营部")));
-        employees.put(204,new Employee(204,"kitty",0,new Department(104,"后勤部")));
+        employees = new HashMap<>();
+        employees.put(201,new Employee(201,"tom",1,"教学部","123456"));
+        employees.put(202,new Employee(202,"tony",1,"市场部","123456"));
+        employees.put(203,new Employee(203,"jemmy",1,"运营部","123456"));
+        employees.put(204,new Employee(204,"kitty",0,"后勤部","123456"));
     }
 
     public Collection<Employee> getEmployees(){
@@ -42,8 +42,6 @@ public class EmployeeDao {
             employee.setId(INDEX++);
         }
 
-        Department dept = departmentDao.getDepartmentById(employee.getDepartment().getId());
-        employee.setDepartment(dept);
         employees.put(employee.getId(),employee);
     }
 

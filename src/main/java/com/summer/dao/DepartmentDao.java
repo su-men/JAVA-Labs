@@ -12,9 +12,9 @@ import java.util.Map;
 public class DepartmentDao {
     //模拟数据库中的数据
 
-    private static Map<Integer, Department> departments = null;
+    private static final Map<Integer, Department> departments;
     static{
-        departments = new HashMap<Integer, Department>();
+        departments = new HashMap<>();
         departments.put(101,new Department(101,"教学部"));
         departments.put(102,new Department(102,"市场部"));
         departments.put(103,new Department(103,"运营部"));

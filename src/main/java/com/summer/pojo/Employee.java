@@ -10,17 +10,18 @@ import java.util.Date;
 public class Employee {
     private Integer id;
     private String lastName;
+    private String password;
     private Integer gender; // 0 girl, 1 boy
 
-    private Department department;
+    private String department;
     private Date birth;
 
-    public Employee(Integer id, String lastName, Integer gender, Department department) {
+    public Employee(Integer id, String lastName, Integer gender, String department, String password) {
         this.id = id;
         this.lastName = lastName;
         this.gender = gender;
         this.department = department;
-
+        this.password = password;
         this.birth = new Date();
     }
 }
