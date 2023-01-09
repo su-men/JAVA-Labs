@@ -16,6 +16,8 @@ public interface EmployeeMapper {
 
     Employee queryEmployeeById(Integer id);
 
+    Employee queryEmployeeByName(String name);
+
     void deleteEmployeeById(Integer id);
 
     void addEmployee(Employee employee);
@@ -23,5 +25,7 @@ public interface EmployeeMapper {
     void updateEmployee(Employee employee);
 
     void addEmployeeMap(@Param("employMap") Map<Integer, Employee> employeeMap);
+
+    void addEmployeeList(List<Employee> list);
 
 }

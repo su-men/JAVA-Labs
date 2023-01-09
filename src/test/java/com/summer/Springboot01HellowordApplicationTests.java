@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -38,13 +38,28 @@ class Springboot01HellowordApplicationTests {
 
     @Test
     public void TestEmployee(){
-        employeeMapper.addEmployee(employeeDao.getEmployeeById(201));
-
-        List<Employee> emps = employeeMapper.queryEmployeeList();
+        Collection<Employee> emps = employeeDao.getEmployees();
         for (Employee emp : emps) {
+            employeeMapper.addEmployee(emp);
+        }
+
+        List<Employee> emps2 = employeeMapper.queryEmployeeList();
+        for (Employee emp : emps2) {
             System.out.println(emp);
         }
     }
+
+    @Test
+    public void TestDeleteEmployee(){
+        Employee employee = employeeMapper.queryEmployeeById(34);
+        employee.setLastName("toooony");
+        employeeMapper.updateEmployee(employee);
+        List<Employee> emps2 = employeeMapper.queryEmployeeList();
+        for (Employee emp : emps2) {
+            System.out.println(emp);
+        }
+    }
+
 
     @Test
     public void TestDao(){
@@ -54,4 +69,17 @@ class Springboot01HellowordApplicationTests {
         }
     }
 
+    @Test
+    public void TestEmployMap(){
+        employeeMapper.addEmployeeMap(employeeDao.getEmployeesMap());
+    }
+
+    @Test
+    public void TestEmployList(){
+        List<Employee> employeeList = new ArrayList<Employee>(employeeDao.getEmployees());
+        for (Employee e: employeeList) {
+            System.out.println(e);
+        }
+        employeeMapper.addEmployeeList(employeeList);
+    }
 }

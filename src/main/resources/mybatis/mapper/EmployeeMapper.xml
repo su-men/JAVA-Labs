@@ -12,6 +12,10 @@
         select * from mybatis.employee where id=#{id}
     </select>
 
+    <select id="queryEmployeeByName" resultType="Employee">
+        select * from mybatis.employee where Last_name=#{name}
+    </select>
+
     <delete id="deleteEmployeeById" parameterType="integer">
         delete from mybatis.employee where id=#{id}
     </delete>
@@ -29,15 +33,27 @@
     </update>
 
     <insert id="addEmployeeMap" parameterType="java.util.Map" >
-        insert into employee(last_name, password, gender, department, birth)
-        values
-            <foreach collection="employMap" item="value" index="key" separator="," open="(" close=")">
-                #{value.id},
-                #{value.password},
-                #{value.gender},
-                #{value.department},
-                #{value.birth}
-            </foreach>
+        insert into employee(last_name, password, gender, department) values
+        <foreach collection="employMap.keys" item="k"  separator=",">
+         (
+            '${employMap[k].lastName}',
+            '${employMap[k].password}',
+            '${employMap[k].gender}',
+            '${employMap[k].department}'
+        )
+        </foreach>
+    </insert>
+
+    <insert id="addEmployeeList" parameterType="java.util.ArrayList">
+        insert into employee(last_name, password, gender, department) values
+        <foreach collection="list" item="emp" index="index" separator=",">
+            (
+            #{emp.lastName},
+            #{emp.password},
+            #{emp.gender},
+            #{emp.department},
+            )
+        </foreach>
     </insert>
 
 </mapper>

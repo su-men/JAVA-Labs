@@ -29,6 +29,10 @@ public class EmployeeDao {
         employees.put(204,new Employee(204,"kitty",0,"后勤部","123456"));
     }
 
+    public Map<Integer,Employee> getEmployeesMap(){
+        return employees;
+    }
+
     public Collection<Employee> getEmployees(){
         return employees.values();
     }

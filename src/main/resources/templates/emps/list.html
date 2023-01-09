@@ -64,7 +64,7 @@
 									<td th:text="${emp.getId()}"></td>
 									<td th:text="${emp.getLastName()}"></td>
 									<td th:text="${emp.getGender()==0?'女':'男'}"></td>
-									<td th:text="${emp.getDepartment().getDepartmentName()}"></td>
+									<td th:text="${emp.getDepartment()}"></td>
 									<td th:text="${#dates.format(emp.getBirth(),'yyyy-MM-dd HH:mm:ss')}"></td>
 									<td>
 										<a  class="btn btn-sm btn-primary" th:href="@{/emps/update(id=${emp.getId()})}">编辑</a>
