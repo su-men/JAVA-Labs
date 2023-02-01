@@ -13,5 +13,4 @@
         <property name="UserDao" ref="mysqlImpl"/>
     </bean>
 
-
 </beans>
